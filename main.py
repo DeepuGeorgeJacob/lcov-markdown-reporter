@@ -136,8 +136,10 @@ if __name__ == "__main__":
 
     # Get input file (lcov.info) from first argument, or use a default path if run locally
     lcov_file = sys.argv[1] if len(sys.argv) > 1 else 'coverage/lcov.info'
+    print(f"lcov_file path {lcov_file}")
 
     # Get output file (coverage_summary.md) from second argument, or use default
     output_file = sys.argv[2] if len(sys.argv) > 2 else 'coverage_summary.md'
+    print(f"output_file name {output_file}")
 
     lcov_to_markdown_pure(lcov_file, output_file)
