@@ -1,0 +1,24 @@
+name: 'LCOV to Markdown Reporter'
+description: 'Reads an lcov.info file and generates a Markdown summary, saving it to a file.'
+
+# Tell GitHub this is a Docker-based action
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  entrypoint: '/entrypoint.sh'
+  # The args list passes the input values to the ENTRYPOINT command in the Dockerfile.
+  args:
+    - ${{ inputs.lcov-file }}
+    - ${{ inputs.output-file }}
+
+# Define the inputs the user can provide
+inputs:
+  lcov-file:
+    description: 'The path to the LCOV file (lcov.info) to be processed.'
+    required: true
+    default: 'lcov.info'
+
+  output-file:
+    description: 'The name of the Markdown file to create with the report.'
+    required: true
+    default: 'coverage_summary.md'
